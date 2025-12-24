@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart';
+
 import 'package:network_requests/service/log_service.dart';
 
 import '../model/post_model.dart';
@@ -60,37 +61,41 @@ class Network {
       return null;
     }
   }
+
   /* HTTP Requests */
 
-  static Map<String,String> paramsEmpty(){
-    Map<String,String> params = {};
+  static Map<String, String> paramsEmpty() {
+    Map<String, String> params = {};
     return params;
   }
 
-  static Map<String,String> paramsCreate(Post post){
-    Map<String,String> params = {};
+  static Map<String, String> paramsCreate(Post post) {
+    Map<String, String> params = {};
     params.addAll({
-
-
-      'title':post.title!,
-      'body':post.body!,
-      'userId':post.userId.toString(),
+      'title': post.title!,
+      'body': post.body!,
+      'userId': post.userId.toString(),
     });
     return params;
   }
 
-  static Map<String,String> paramsUpdate(Post post){
-    Map<String,String> params = {};
+  static Map<String, String> paramsUpdate(Post post) {
+    Map<String, String> params = {};
     params.addAll({
-      'id':post.id.toString(),
-      'title':post.title!,
-      'body':post.body!,
-      'userId':post.userId.toString(),
+      'id': post.id.toString(),
+      'title': post.title!,
+      'body': post.body!,
+      'userId': post.userId.toString(),
     });
     LogService.w(params.toString());
     return params;
   }
 
+  /* HTTP Parsing */
 
-  /* HTTP Requests */
+  static List<Post> parsePostList(String response) {
+    dynamic json = jsonDecode(response);
+    var data = List<Post>.from(json.map((x) => Post.fromJson(x)));
+    return data;
+  }
 }

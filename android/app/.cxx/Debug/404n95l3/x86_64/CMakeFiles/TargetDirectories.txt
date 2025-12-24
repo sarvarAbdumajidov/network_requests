@@ -1,0 +1,2 @@
+C:/Users/papagandus/StudioProjects/network_requests/android/app/.cxx/Debug/404n95l3/x86_64/CMakeFiles/edit_cache.dir
+C:/Users/papagandus/StudioProjects/network_requests/android/app/.cxx/Debug/404n95l3/x86_64/CMakeFiles/rebuild_cache.dir
